@@ -1,0 +1,345 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+.header-outer{
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    width: 100%;
+    height: 50px;
+    background-color: #fafaff;
+    display: flex;
+    /* border: 1px solid red; */
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+}
+.header-left, .header-right{
+    flex: 1;
+    /* border: 1px solid black; */
+}
+.header-right{
+    /* display: flex; */
+    /* align-items: center;
+    justify-content: center; */
+}
+.header-right > ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: flex-end;
+   
+}
+.header-right > ul>li{
+    margin-right: 7px;
+    padding: 5px 15px;
+    border-bottom: 1px solid transparent;
+}
+.header-right > ul>li>a{
+    color: #003049;
+    text-decoration: none;
+}
+.header-right > ul>li :hover{
+    border-bottom: 3px solid #f77f00;
+}
+
+/*====Main slider =====*/
+.main-slider{
+    background-color: lightblue;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    position: relative;
+    background-image: url('https://img.freepik.com/free-photo/thunderstorm-with-lightning-sky-venice_268835-4017.jpg?w=900&t=st=1685374700~exp=1685375300~hmac=576dd623a4978e7cac2b7c240aea1c6fc70a78b73b5e5c040a24d3d8c7d89a60');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* border: 1px solid blue;
+   
+    /* display: flex; */
+}
+
+.searchbox-outer{
+    width: auto;
+    height: 7vh;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    /* justify-content: flex-end; */
+    position: absolute;
+   right: 0;
+    /* margin-right: 20px; */
+    padding-top: 10px;
+    padding-right: 30px;
+
+}
+
+form{
+    width: 30%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    /* justify-content: flex-end; */
+    /* margin-right: 30px;
+    margin-top: 20px; */
+    /* border: 1px solid red; */
+    
+
+}
+form input{
+    padding: 10px 50px;
+    border: none;
+    outline: none;
+}
+form button{
+    background: tomato;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+}
+
+
+
+/*====Current weather detailslider =====*/
+
+.current-weather-outer{
+    width: 100%;
+    height: 63vh;
+    /* border: 1px solid red; */
+    display: flex;
+    position: relative;
+    top: 20px;
+}
+.weathercard-outer{
+    width: 25%;
+    height: 50vh;
+    /* border: 1px solid red; */
+    position: relative;
+    left: 3%;
+    top: 10px;
+    border-radius: 5%;
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 30px;
+}
+.title-current-weather{
+    width: auto;
+    height: auto;
+    /* border: 1px solid blue; */
+    margin: 5px 25px;
+    position: absolute;
+}
+.temp-reading-outer{
+    width: 100%;
+    height: 20vh;
+    /* border: 1px solid blue; */
+    position: absolute;
+    top: 5vh;
+    display: flex;
+}
+
+.temp-value-outer,.comditionimage-outer{
+    flex: 1;
+    height: 100%;
+    /* border: 1px solid blue; */
+}
+
+.conditionimage-inner{
+    width: 85%;
+    height: 85%;
+    margin-left: 15px;
+    background-image: url('https://cdn2.vectorstock.com/i/1000x1000/67/36/modern-weather-icon-of-sun-flat-symbol-on-white-vector-23926736.jpg');
+    /* border: 1px solid blue; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.weather-status-outer{
+    width: 85%;
+    height: auto;
+    /* border: 1px solid blue; */
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.temp-value-inner{
+    width: auto;
+    height: auto;
+    /* display: flex;
+    align-items :flex-start;
+    justify-content: flex-start; */
+    padding-top: 45px;
+    font-size: 400%;
+    /* border: 1px solid blue; */
+}
+.temp-symbol-inner{
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid blue; */
+}
+
+.locationdetail-outer{
+    width: auto;
+    height: auto;
+    /* border: 1px solid brown; */
+    position: absolute;
+    top: 0; 
+    right: 0;
+    /* display: flex;
+    align-items: center; */
+    padding: 5px;
+    /* margin-left: 10px; */
+}
+
+.otherweather-details-outer{
+    width: 100%;
+    height: auto;
+    /* border: 1px solid blue; */
+    position: absolute;
+    bottom: 18%;
+}
+
+.otherweather-details-outer > ul{
+    width: 100%;
+    height: auto;
+    display: flex;
+    list-style: none;
+    align-items: flex-start;
+    justify-content: center;
+    /* border: 1px solid blue; */
+    flex-direction: column;
+}
+.otherweather-details-outer> ul>li{
+    flex: 1;
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+/*----   Sunrise and sunset details ------------*/
+.sunsetrise-outer{
+    width: 25%;
+    height: auto;
+    position: absolute;
+    bottom: 18%;
+    left: 3%;
+    border-radius: 8%;
+    padding: 10px 5px;
+    background: #fafaff;
+    /* border: 1px solid blue; */
+}
+.sunrise-inner,.sunset-inner{
+    width: 90%;
+    height: 5vh;
+    /* border: 1px solid red; */
+    
+    margin-top: 10px;
+    margin-left: 18px;
+    display: flex;
+}
+.uparrow-sysmbol-outer,.sunrise-title-inner,.sunrise-time-inner{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid blue; */
+}
+.uparrow-sysmbol-outer{
+   
+    background-image: url('data:image/png;base64,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');
+    background-repeat: no-repeat;
+    background-size :contain;
+    background-position: center;
+    /* background-color: red; */
+}
+.sunrise-title-inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #f77f00; */
+}
+.downarrow-sysmbol-outer,.sunset-title-inner,.sunset-time-inner{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid blue; */
+}
+.downarrow-sysmbol-outer{
+    background-image: url('https://icons-for-free.com/iconfiles/png/512/down+arrow+download+icon-1320185738770602413.png');
+    background-repeat: no-repeat;
+    background-size :contain;
+    background-position: center;
+    /* background-color: red; */
+}
+.sunset-title-inner{
+    /* background-color: #f77f00; */
+}
+
+/*----   Sunrise and sunset details ------------*/
+
+/*----  Direct to Hourly / Daily / Tomorrow / Yesterday weather details ------------*/
+
+.direct-to-more-details-outer{
+    width: 20%;
+    height: 25vh;
+    position: absolute;
+    top: 15%;
+    right: 2%;
+    border-radius: 8%;
+    /* background: #fafaff; */
+    /* border: 1px solid blue; */
+}
+
+.direct-to-more-details-outer > ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* border: 1px solid blue; */
+    /* border: 1px solid blue; */
+}
+.direct-to-more-details-outer > ul>li{
+    flex: 1;
+    width: 60%;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid blue; */
+    font-size: 150%;
+    border-radius: 10px;
+    background: #e9ecef;
+    opacity: .7;
+    
+    /* border: 1px solid blue; */
+}
+.direct-to-more-details-outer > ul>li:first-child{
+    margin-top: 10px;
+    /* height: 100%; */
+    /* border: 1px solid blue; */
+    /* border: 1px solid blue; */
+}
+.direct-to-more-details-outer > ul>li>a{
+    text-decoration: none;
+}
+
+/*----  Direct to Hourly / Daily / Tomorrow / Yesterday weather details ------------*/
