@@ -11,6 +11,7 @@
     <!--font-->
     <link rel="stylesheet" href="CSS\currentweatherstyle.css">
     <title>Document</title>
+    <script src="/lib/jquery-3.7.0.min.js"></script>
 </head>
 <body>
     <!-- header-section -->
@@ -38,26 +39,42 @@
     <div class="main-slider">
          <!-- current weather details of search location bar-->
         <div class="searchbox-outer">
-            <form >
+            <input class="searchlocation" type="text" placeholder="location">
+                <button class="searchBtn">search</button>
+            <!-- <form >
                 <input type="text" placeholder="location">
                 <button class="submit">search</button>
-            </form>
+            </form> -->
         </div>
         <!-- current weather details of search location bar-->
 
         <!-- current weather details of current location -->
-        <div class="current-weather-outer">
+        <!-- <div class="current-weather-outer"> -->
             <div class="weathercard-outer">
                 <div class="title-current-weather"><b>current weather</b></div>
                 <div class="locationdetail-outer">
-                    <p><b>Colombo, western</b><br>
+                    <!-- <p><b>Colombo, western</b><br>
                         Sri Lanka<br>
                         Sunday 11.00AM
-                </p>
+                </p> -->
+
+                
+                <div class="dayofWeek"></div>
                 </div>
-                <div class="temp-reading-outer">
-                    <div class="comditionimage-outer">
-                        <div class="conditionimage-inner"></div>
+                    <img src="" alt="image" id="conditionimage">
+                    <div class="temp-value-inner"><b>12°</b></div>
+                    <div class="temp-symbol-inner">
+                        <button class="celcius">°C</button>&nbsp&nbsp
+                        <button class="fahrenheit">°F</button>
+                    </div>
+                    <div class="conditiondescription">
+                        <b>sunny</b>
+                    </div>
+                <!-- <div class="temp-reading-outer"> -->
+                    <!-- <div class="comditionimage-outer">
+                        <div class="conditionimage-inner" id="conditionimage">
+                            <img src="https://cdn2.vectorstock.com/i/1000x1000/67/36/modern-weather-icon-of-sun-flat-symbol-on-white-vector-23926736.jpg" alt="" id="conimg">
+                        </div>
                         <div class="weather-status-outer">
                             <b>sunny</b>
                         </div>
@@ -65,62 +82,76 @@
                     <div class="temp-value-outer">
                         <div class="temp-value-inner"><b>12°</b></div>
                         <div class="temp-symbol-inner">
-                            <b>°C &nbsp &nbsp°F</b>
+                            <button class="celcius">°C</button>&nbsp&nbsp
+                            <button class="fahrenheit">°F</button>
                         </div>
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div> -->
+                <div class="dateAndTime"></div>
+                <span class="town-region">Panadura</span>
+                <!-- <span class="region">Western<br></span><br> -->
+                <div class="country"></div>
                 <div class="otherweather-details-outer">
-                    <ul>
+
+                    <span class="windvalue"></span>
+                        <button class="wind-kph">kph</button>&nbsp&nbsp
+                    <button class="wind-mph">mph</button>
+
+
+                    <div class="rainvalue-outer">
+                        <span class="rainvalue"></span>
+                        <button class="precip_mm">mm</button>&nbsp&nbsp
+                        <button class="precip_in">in</button>
+                    </div>
+                    <div class="visibilityValue-outer">
+                        <span class="visibilityValue"></span>
+                        <button class="vis_km">km</button>&nbsp&nbsp
+                        <button class="vis_miles">miles</button>
+                    </div>
+
+                    <div class="humidityvalue">
+                    </div>
+
+                    <!-- <div class="windvalue-outer">
+                        <b>wind &nbsp 12km/h &nbsp m/s &nbsp mph &nbsp  ft/s</b>
+                        
+                    </div> -->
+                    <!-- <ul>
                         <li>
                             <div class="time-outer">
                                 <b>wind &nbsp 12km/h &nbsp m/s &nbsp mph &nbsp  ft/s</b>
+                                <span class="windvalue"></span>
+                                <button class="wind-kph">kph</button>&nbsp&nbsp
+                            <button class="wind-mph">mph</button>
                             </div>
                         </li>
                         <li>
                             <div class="time-outer">
                                 
-                                <b>humidity &nbsp 60%</b>
+                                <div class="humidityvalue"></div>
                             </div>
                         </li>
                         <li>
                             <div class="time-outer">
-                                <b>percipitation &nbsp 40%</b>
+                                <div class="rainvalue"></div>
                             </div>
                         </li>
                         <li>
                             <div class="time-outer">
-                                <b>visibility &nbsp 10km</b>
+                                <div class="visibilityValue"></div>
                             </div>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
           <!-- current weather details of current location -->
 
           <!-- sunset -sunrise-details -->
           <div class="sunsetrise-outer">
-            <div class="sunrise-inner">
-                <div class="uparrow-sysmbol-outer">
-
-                </div>
-                <div class="sunrise-title-inner">
-                    <b>sunrise</b>
-                </div>
-                <div class="sunrise-time-inner">
-                    <b>6.35AM</b>
-                </div>
+            <div class="sunrise-text">
             </div>
-            <div class="sunset-inner">
-                <div class="downarrow-sysmbol-outer">
-
-                </div>
-                <div class="sunset-title-inner">
-                    <b>sunset</b>
-                </div>
-                <div class="sunset-time-inner">
-                    <b>5.45 PM</b>
-                </div>
+            <div class="sunset-text">
             </div>
           </div>
           <!-- sunset -sunrise-details -->
@@ -150,5 +181,7 @@
             
     </div>
      <!-- main slider-section --> 
+
+     <script src="/JS/currentweather.js"></script>
 </body>
 </html>
