@@ -54,28 +54,47 @@
     width: 100%;
     min-height: 95vh;
     height: auto;
-    background-image: url('https://img.freepik.com/free-vector/realistic-galaxy-background_52683-12122.jpg?w=996&t=st=1685245568~exp=1685246168~hmac=e3bd96da0d78a10762ff2fbff0c93791899c085037a28d75659f87ae8c1ff907');
+    background-image: url('https://img.freepik.com/free-photo/close-up-beautiful-pink-cherry-prunus-cerasoides-wild-himalayan-cherry-like-sakusa-flower-blooming-north-thailand-chiang-mai-thailand_1150-21742.jpg?w=996&t=st=1685859166~exp=1685859766~hmac=6ec17acfb1b273f9e4bf06c69a505492cd91b31c04c220dc19ea99f30476e9ad');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
    
     /* display: flex; */
 }
 .searchbox-outer{
-    width: auto;
-    height: 15vh;
-    border: 1px solid red;
-    /* display: flex;
+    width: 25%;
+    height: auto;
+    /* border: 1px solid red; */
+    display: flex;
     align-items: center;
-    justify-content: flex-end; */
+    justify-content: flex-end;
     position: absolute;
     right: 30px;
     top:10px;
+    word-spacing: 0;
     /* margi
     n-right: 20px; */
 
+}
+.searchlocation{
+    width: 60%;
+    height: 25px;
+    padding-left: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.searchBtn{
+    width: 20%;
+    height: 25px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
 }
 /* form{
     width: 30%;
@@ -112,12 +131,16 @@ form button{
 .weathercard-outer{
     width: 25%;
     height: 60vh;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     position:absolute;
     left: 3%;
     top: 10px;
     border-radius: 5%;
     background-color: white;
+    background: transparent;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 .title-current-weather{
     width: 80%;
@@ -138,15 +161,21 @@ form button{
 .temp-value-outer,.comditionimage-outer{
     flex: 1;
     height: 100%;
+  
     /* border: 1px solid blue; */
 }
-
+.comditionimage-outer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid blue; */
+}
 .conditionimage-inner{
-    width: 85%;
-    height: 100%;
-    margin-left: 15px;
+    width: 60%;
+    height: 60;
+    margin-bottom: 15px;
     /* background-image: url('https://cdn2.vectorstock.com/i/1000x1000/67/36/modern-weather-icon-of-sun-flat-symbol-on-white-vector-23926736.jpg'); */
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -170,7 +199,7 @@ img{
     align-items: center;
     justify-content: center;
     font-size: 450%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 .temp-symbol-inner{
     width: 100%;
@@ -178,13 +207,24 @@ img{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
+.celcius, .fahrenheit{
+    border: none;
+    background: none;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.conditiondescription{
+    font-size: 110%;
+    font-weight: bold;
+}
 .locationdetail-outer{
     width: 95%;
     height: 15vh;
-    border: 1px solid brown;
+    /* border: 1px solid brown; */
     position: absolute;
     top: 25vh; 
     /* display: flex;
@@ -201,12 +241,16 @@ img{
     align-items: center;
     justify-content: center;
 }
+.dateAndTime{
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
 .wind-outer,.rain-outer{
     margin-right: 10px;
 }
 .wind-outer,.rain-outer, .humidity-outer{
     border-radius: 8px;
-    background-color: #0096c7;
+    background-color: #bbdefb;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -214,12 +258,13 @@ img{
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    opacity: 0.7;
 }
 .wind-outer{
     width: 30%;
     height: 16vh;
     font-weight: bold;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .rain-outer{
     width: 30%;
@@ -238,15 +283,16 @@ img{
 .hourly-weather-forcaste-outer{
     width: 100%;
     height: 30vh;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     position: absolute;
    bottom: 0;
     right: 0;
     background-color: #48bfe3;
-    /* background-image: url('https://img.freepik.com/free-vector/mountain-landscape-night_1048-8048.jpg?w=996&t=st=1685252305~exp=1685252905~hmac=9bda3476bbf2b6710965a4a1660293676cff5d11a55ba5f85f33aba5c68661ea'); */
+    background-image: url('https://img.freepik.com/free-vector/mountain-landscape-night_1048-8048.jpg?w=996&t=st=1685252305~exp=1685252905~hmac=9bda3476bbf2b6710965a4a1660293676cff5d11a55ba5f85f33aba5c68661ea');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background: transparent;
     
     display: flex;
 }
@@ -256,6 +302,8 @@ img{
     /* border: 1px solid red; */
     position: absolute;
     top: 0;
+    left: 10px;
+    font-weight: bold;
     display: flex;
     align-items: center;
 }
@@ -277,6 +325,7 @@ img{
     list-style: none;
     align-items: center;
     justify-content: center;
+    position: absolute;
 }
 .hourly-forcaste-detail-outer> ul>li{
     flex: 1;
@@ -284,6 +333,7 @@ img{
     border-radius: 8px;
     /* border: 1px solid red; */
     background-color: #fef9ef;
+    background: transparent;
     /* background-color: #f77f00; */
     margin-right: 35px;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
@@ -291,10 +341,10 @@ img{
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 .hourly-forcaste-detail-outer> ul>li:first-child{
-    margin-left: 10px;
+    margin-left: 20px;
 }
 .hourly-forcaste-detail-outer> ul>li:last-child{
-    margin-right: 50px;
+    margin-right: 35px;
 }
 .time-outer{
     width: 100%;
@@ -303,31 +353,47 @@ img{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
     color: black;
 }
-.wetherimage1-outer,.wetherimage2-outer,.wetherimage3-outer,.wetherimage4-outer,.wetherimage5-outer,.wetherimage6-outer{
-    width: 75%;
-    height: 65%;
-    margin-left: 10%;
+.tempValue-outer{
+    width: 100%;
+    height: 15%;
     /* border: 1px solid red; */
+    margin-top: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
+    color: black;
+}
+.wetherimage1-outer,.wetherimage2-outer,.wetherimage3-outer,.wetherimage4-outer,.wetherimage5-outer,.wetherimage6-outer{
+    width: 50%;
+    height: 50%;
+    margin-left: 22%;
+    margin-top: 10px;
+    /* border: 1px solid red; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+
     color: black;
     
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
-.hour1image{
+.hour1image,.hour2image,.hour3image,.hour4image,.hour5image,.hour6image{
     /* background-image: url('https://thumbs.dreamstime.com/z/sun-icon-modern-weather-icon-flat-vector-symbols-sun-vector-illustration-sun-icon-modern-weather-icon-flat-vector-symbols-139226765.jpg'); 
     */
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
 }
-.wetherimage2-outer{
-    background-image: url('https://thumbs.dreamstime.com/z/sun-icon-modern-weather-icon-flat-vector-symbols-sun-vector-illustration-sun-icon-modern-weather-icon-flat-vector-symbols-139226765.jpg');
+/* .hour2image{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 .wetherimage3-outer{
     background-image: url('https://static.vecteezy.com/system/resources/previews/009/316/966/non_2x/weather-icon-logo-illustration-cloud-with-sun-symbol-template-for-graphic-and-web-design-collection-free-vector.jpg');
@@ -340,4 +406,4 @@ img{
 }
 .wetherimage6-outer{
     background-image: url('https://cdn.vectorstock.com/i/preview-1x/55/02/sun-cloud-icon-line-weather-symbol-vector-21085502.jpg');
-}
+} */
