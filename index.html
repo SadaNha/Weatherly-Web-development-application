@@ -11,6 +11,7 @@
     <!--font-->
     <link rel="stylesheet" href="CSS/styles.css">
     <title>Document</title>
+    <script src="/lib/jquery-3.7.0.min.js"></script>
 </head>
 <body>
     <!-- header-section -->
@@ -36,32 +37,52 @@
     <!-- mainslider-section -->
     <div class="main-slider">
         <!-- current weather details of current location -->
-        <div class="searchbox-outer">
-            <form >
-                <input type="text" placeholder="location">
-                <button class="submit">search</button>
-            </form>
-        </div>
+
         <!-- current weather details of current location -->
-        <div class="current-weather-outer">
+        <!-- <div class="current-weather-outer"> -->
+            <!-- Search location box -->
+
+            <div class="searchbox-outer">
+
+                
+                <input class="searchlocation" type="text" placeholder="location">
+                <button class="searchBtn">search</button>
+                <form >
+                    <!-- <input type="text" placeholder="location"> -->
+                    <!-- <button class="submit" id="searchBtn">search</button> -->
+                </form>
+            </div>
+
+            <!-- Search location box -->
             <div class="weathercard-outer">
                 <div class="title-current-weather"><b>current weather</b></div>
                 <div class="temp-reading-outer">
                     <div class="temp-value-outer">
-                        <div class="temp-value-inner"><b>12°</b></div>
+                        <div class="temp-value-inner" ><b>12°</b></div>
                         <div class="temp-symbol-inner">
-                            <b>°C &nbsp &nbsp°F</b>
+                            <button class="celcius">°C</button>&nbsp&nbsp
+                            <button class="fahrenheit">°F</button>
+                            <!-- <b>°C &nbsp &nbsp°F</b> -->
                         </div>
                     </div>
                     <div class="comditionimage-outer">
-                        <div class="conditionimage-inner"></div>
+                        <div class="conditionimage-inner" id="conditionimage">
+                            <img src="https://cdn2.vectorstock.com/i/1000x1000/67/36/modern-weather-icon-of-sun-flat-symbol-on-white-vector-23926736.jpg" alt="" id="conimg">
+                        </div>
                     </div>
                 </div>
                 <div class="locationdetail-outer">
-                    <p><b>Colombo, western</b><br>
+                    <!-- <p><b>Colombo, western</b><br>
                         Sri Lanka<br><br>
                         Sunday 11.00AM
-                </p>
+                </p> -->
+                <span class="town">Panadura</span>
+                <span class="region">Western<br></span><br>
+                <!-- <span class="country">Srilnka </span> -->
+<!-- 
+                <div class="townname" id="town">toen</div>
+                <div class="regionname" id="region">dddd</div> -->
+                <div class="country"></div>
                 </div>
                 <div class="otherdetail-outer">
                     <!-- <ul>
@@ -76,20 +97,20 @@
                         </li>
                     </ul> -->
                     <div class="wind-outer">
-                        <b>8km/h</b><br>
-                        <b>wind</b>
+                       <div class="windvalue"></div>
+                        <br>wind
                     </div>
                     <div class="rain-outer">
-                        <b>1%</b><br>
-                        <b>rain</b>
+                        <div class="rainvalue"></div>
+                        <br>rain
                     </div>
                     <div class="humidity-outer">
-                        <b>65%</b><br>
-                        <b>humidity</b>
+                        <div class="humidityvalue"></div>
+                        <br>humidity
                     </div>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
           <!-- current weather details of current location -->
 
             <!-- Hourly weather forcaste of current location -->
@@ -104,11 +125,13 @@
                 <div class="hourly-forcaste-detail-outer">
                     <ul>
                         <li>
-                            <div class="time-outer">
+                            <div class="time-outer" id="hour1">
                                 <b>12.00 PM</b>
                             </div>
-                            <div class="wetherimage1-outer"></div>
-                            <div class="time-outer">
+                            <div class="wetherimage1-outer" >
+                                <img src="no image" alt="" id="hour1image">
+                            </div>
+                            <div class="time-outer" id="hour1Value">
                                 <b>18°</b>
                             </div>
                         </li>

@@ -52,35 +52,40 @@
 .main-slider{
     background-color: lightblue;
     width: 100%;
-    min-height: 100vh;
+    min-height: 95vh;
     height: auto;
     background-image: url('https://img.freepik.com/free-vector/realistic-galaxy-background_52683-12122.jpg?w=996&t=st=1685245568~exp=1685246168~hmac=e3bd96da0d78a10762ff2fbff0c93791899c085037a28d75659f87ae8c1ff907');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    /* border: 1px solid blue; */
+    position: relative;
+    border: 1px solid blue;
    
     /* display: flex; */
 }
 .searchbox-outer{
-    width: 100%;
-    height: 7vh;
-    /* border: 1px solid red; */
-    display: flex;
+    width: auto;
+    height: 15vh;
+    border: 1px solid red;
+    /* display: flex;
     align-items: center;
-    justify-content: flex-end;
-    /* margin-right: 20px; */
+    justify-content: flex-end; */
+    position: absolute;
+    right: 30px;
+    top:10px;
+    /* margi
+    n-right: 20px; */
 
 }
-form{
+/* form{
     width: 30%;
     height: 30px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     margin-right: 30px;
-    /* margin-right: 20px; */
-    /* border: 1px solid red; */
+     margin-right: 20px; 
+    border: 1px solid red;
 
 }
 form input{
@@ -94,21 +99,21 @@ form button{
     border: none;
     outline: none;
 
-}
+}  */
 /*====Current weather detailslider =====*/
 
-.current-weather-outer{
+/* .current-weather-outer{
     width: 100%;
-    height: 63vh;
-    /* border: 1px solid red; */
+    height: 100vh;
+    border: 1px solid red;
     display: flex;
     position: relative;
-}
+} */
 .weathercard-outer{
     width: 25%;
     height: 60vh;
-    /* border: 1px solid red; */
-    position: relative;
+    border: 1px solid red;
+    position:absolute;
     left: 3%;
     top: 10px;
     border-radius: 5%;
@@ -140,11 +145,21 @@ form button{
     width: 85%;
     height: 100%;
     margin-left: 15px;
-    background-image: url('https://cdn2.vectorstock.com/i/1000x1000/67/36/modern-weather-icon-of-sun-flat-symbol-on-white-vector-23926736.jpg');
+    /* background-image: url('https://cdn2.vectorstock.com/i/1000x1000/67/36/modern-weather-icon-of-sun-flat-symbol-on-white-vector-23926736.jpg'); */
+    border: 1px solid blue;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+img{
+    width: 85%;
+    height: 100%;
+    margin-left: 15px;
+    /* background-image: url('https://cdn2.vectorstock.com/i/1000x1000/67/36/modern-weather-icon-of-sun-flat-symbol-on-white-vector-23926736.jpg'); */
     /* border: 1px solid blue; */
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center;  
 }
 
 
@@ -154,8 +169,8 @@ form button{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 500%;
-    /* border: 1px solid blue; */
+    font-size: 450%;
+    border: 1px solid blue;
 }
 .temp-symbol-inner{
     width: 100%;
@@ -163,17 +178,17 @@ form button{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    /* border: 1px solid blue; */
+    border: 1px solid blue;
 }
 
 .locationdetail-outer{
     width: 95%;
     height: 15vh;
-    /* border: 1px solid brown; */
+    border: 1px solid brown;
     position: absolute;
     top: 25vh; 
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
     margin-left: 10px;
 }
 .otherdetail-outer{
@@ -203,16 +218,19 @@ form button{
 .wind-outer{
     width: 30%;
     height: 16vh;
-    /* border: 1px solid black; */
+    font-weight: bold;
+    border: 1px solid black;
 }
 .rain-outer{
     width: 30%;
     height: 16vh;
+    font-weight: bold;
     /* border: 1px solid black; */
 }
 .humidity-outer{
     width: 30%;
     height: 16vh;
+    font-weight: bold;
     /* border: 1px solid black; */
 }
 
@@ -220,15 +238,17 @@ form button{
 .hourly-weather-forcaste-outer{
     width: 100%;
     height: 30vh;
-    /* border: 1px solid red; */
-    /* background-color: #48bfe3; */
-    background-image: url('https://img.freepik.com/free-vector/mountain-landscape-night_1048-8048.jpg?w=996&t=st=1685252305~exp=1685252905~hmac=9bda3476bbf2b6710965a4a1660293676cff5d11a55ba5f85f33aba5c68661ea');
+    border: 1px solid red;
+    position: absolute;
+   bottom: 0;
+    right: 0;
+    background-color: #48bfe3;
+    /* background-image: url('https://img.freepik.com/free-vector/mountain-landscape-night_1048-8048.jpg?w=996&t=st=1685252305~exp=1685252905~hmac=9bda3476bbf2b6710965a4a1660293676cff5d11a55ba5f85f33aba5c68661ea'); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     
     display: flex;
-    position: relative;
 }
 .hourly-forcaste-title-outer{
     width: 100%;
@@ -299,8 +319,12 @@ form button{
     background-size: cover;
     background-position: center;
 }
-.wetherimage1-outer{
-    background-image: url('https://thumbs.dreamstime.com/z/sun-icon-modern-weather-icon-flat-vector-symbols-sun-vector-illustration-sun-icon-modern-weather-icon-flat-vector-symbols-139226765.jpg');
+.hour1image{
+    /* background-image: url('https://thumbs.dreamstime.com/z/sun-icon-modern-weather-icon-flat-vector-symbols-sun-vector-illustration-sun-icon-modern-weather-icon-flat-vector-symbols-139226765.jpg'); 
+    */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 .wetherimage2-outer{
     background-image: url('https://thumbs.dreamstime.com/z/sun-icon-modern-weather-icon-flat-vector-symbols-sun-vector-illustration-sun-icon-modern-weather-icon-flat-vector-symbols-139226765.jpg');
