@@ -133,7 +133,7 @@
     top: 30%;
     left: -2%;
 } */
-.weathercard3-outer{
+.weathercard1-outer{
     width: 25%;
     height: 50vh;
     border: 1px solid red;
@@ -145,7 +145,7 @@
     padding-top: 5px;
     padding-bottom: 30px;
 }
-.weathercard3-date{
+.weathercard1-date{
     width: auto;
     height: auto;
     border: 1px solid blue;
@@ -153,7 +153,7 @@
     position: absolute;
     font-weight: bold;
 }
-.temp-readingAndimage-day3before-outer{
+.temp-readingAndimage-day1after-outer{
     width: 100%;
     height: 20vh;
     border: 1px solid blue;
@@ -178,7 +178,7 @@
     background-size: cover;
     background-position: center;
 }
-.weather-status-day3before{
+.weather-status-day1after{
     width: 85%;
     height: auto;
     border: 1px solid blue;
@@ -193,7 +193,7 @@
 }
 
 
-.temp-value-day3before{
+.temp-value-day1after{
     width: auto;
     height: auto;
     /* display: flex;
@@ -265,7 +265,7 @@
     font-weight: bold;
 }
 
-.weather-status-day2before{
+.weather-status-day2after{
     width: 85%;
     height: auto;
     border: 1px solid blue;
@@ -279,12 +279,21 @@
     font-weight: bold;
 }
 
+.temp-readingAndimage-day2after-outer{
+    width: 100%;
+    height: 20vh;
+    border: 1px solid blue;
+    position: absolute;
+    top: 5vh;
+    display: flex;
+}
+
 /*====Historical weather detailslider 2 days before =====*/
 
 
 /*====Historical weather detailslider 1 days before =====*/
 
-.weathercard1-outer{
+.weathercard3-outer{
     width: 25%;
     height: 50vh;
     /* border: 1px solid red; */
@@ -304,7 +313,7 @@
     position: absolute;
 }
 
-.weather-status-day1before{
+.weather-status-day3after{
     width: 85%;
     height: auto;
     border: 1px solid blue;
@@ -318,13 +327,22 @@
     font-weight: bold;
 }
 
-.weathercard1-date{
+.weathercard3-date{
     width: auto;
     height: auto;
     border: 1px solid blue;
     margin: 5px 25px;
     position: absolute;
     font-weight: bold;
+}
+
+.temp-readingAndimage-day3after-outer{
+    width: 100%;
+    height: 20vh;
+    border: 1px solid blue;
+    position: absolute;
+    top: 5vh;
+    display: flex;
 }
 
 /*====Historical weather detailslider 1 days before =====*/
