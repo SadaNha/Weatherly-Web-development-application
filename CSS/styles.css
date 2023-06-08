@@ -9,7 +9,7 @@
     z-index: 500;
     width: 100%;
     height: 50px;
-    background-color: #fafaff;
+    background-color: white;
     display: flex;
     /* border: 1px solid red; */
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
@@ -70,7 +70,7 @@
 .main-slider{
     background-color: lightblue;
     width: 100%;
-    min-height: 95vh;
+    min-height: 100vh;
     height: auto;
     background-image: url('https://img.freepik.com/free-photo/close-up-beautiful-pink-cherry-prunus-cerasoides-wild-himalayan-cherry-like-sakusa-flower-blooming-north-thailand-chiang-mai-thailand_1150-21742.jpg?w=996&t=st=1685859166~exp=1685859766~hmac=6ec17acfb1b273f9e4bf06c69a505492cd91b31c04c220dc19ea99f30476e9ad');
     background-repeat: no-repeat;
@@ -410,20 +410,68 @@ img{
     background-size: contain;
     background-position: center;
 }
-/* .hour2image{
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+
+ @media screen and (max-width : 880px) {
+    .weathercard-outer{
+        width: 30%;
+        height: 60vh;
+        
+    }
 }
-.wetherimage3-outer{
-    background-image: url('https://static.vecteezy.com/system/resources/previews/009/316/966/non_2x/weather-icon-logo-illustration-cloud-with-sun-symbol-template-for-graphic-and-web-design-collection-free-vector.jpg');
+
+@media screen and (max-width : 750px) {
+    .weathercard-outer{
+        width: 40%;
+        height: 60vh;   
+    }
+
+    
+
 }
-.wetherimage4-outer{
-    background-image: url('https://static.vecteezy.com/system/resources/previews/009/316/966/non_2x/weather-icon-logo-illustration-cloud-with-sun-symbol-template-for-graphic-and-web-design-collection-free-vector.jpg');
+@media screen and (max-width : 550px) {
+    .weathercard-outer{
+        width: 50%;
+        height: 60vh;
+        
+    }
+    .hourly-forcaste-detail-outer{
+        width: 100%;
+        height: auto;
+        border: 1px solid red;
+        position: relative;
+        /* bottom: 0; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #f77f00;
+        
+    }
+    .hourly-forcaste-detail-outer > ul{
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        list-style: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        /* background: #f77f00; */
+    }
+} 
+
+@media screen and (max-width : 450px) {
+    .weathercard-outer{
+        width: 60%;
+        height: 60vh;
+        
+    }
 }
-.wetherimage5-outer{
-    background-image: url('https://static.vecteezy.com/system/resources/previews/009/316/966/non_2x/weather-icon-logo-illustration-cloud-with-sun-symbol-template-for-graphic-and-web-design-collection-free-vector.jpg');
+
+@media screen and (max-width : 350px) {
+    .weathercard-outer{
+        width: 90%;
+        height: 60vh;
+        
+    }
 }
-.wetherimage6-outer{
-    background-image: url('https://cdn.vectorstock.com/i/preview-1x/55/02/sun-cloud-icon-line-weather-symbol-vector-21085502.jpg');
-} */

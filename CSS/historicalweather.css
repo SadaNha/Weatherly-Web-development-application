@@ -9,7 +9,7 @@
     z-index: 500;
     width: 100%;
     height: 50px;
-    background-color: #fafaff;
+    background-color: white;
     display: flex;
     /* border: 1px solid red; */
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
@@ -97,13 +97,14 @@
 .searchbox-outer{
     width: 25%;
     height: auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     align-items: center;
     justify-content: flex-end;
     position: absolute;
     right: 30px;
     top:10px;
+    border: none;
     /* word-spacing: 0; */
     /* margi
     n-right: 20px; */
@@ -116,17 +117,14 @@
     padding-left: 10px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    /* border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center; */
+    border: none;
 }
 .searchBtn{
     width: 20%;
     height: 25px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    /* border: none; */
+    border: none;
 }
 
 
@@ -138,7 +136,7 @@
     top: 20%;
     font-size: 120%;
     font-weight: bold;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     /* font-size: 120%; */
 }
 
@@ -156,7 +154,7 @@
 .weathercard3-outer{
     width: 25%;
     height: 50vh;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     position: absolute;
     left: 5%;
     top: 230px;
@@ -168,7 +166,7 @@
 .weathercard3-date{
     width: auto;
     height: auto;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin: 5px 25px;
     position: absolute;
     font-weight: bold;
@@ -176,7 +174,7 @@
 .temp-readingAndimage-day3before-outer{
     width: 100%;
     height: 20vh;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     position: absolute;
     top: 5vh;
     display: flex;
@@ -185,15 +183,15 @@
 .temp-value-outer,.comditionimage-outer{
     flex: 1;
     height: 100%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .conditionimage{
-    width: 85%;
-    height: 85%;
+    width: 60%;
+    height: 60%;
     margin-left: 15px;
     /* background-image: url('https://cdn2.vectorstock.com/i/1000x1000/67/36/modern-weather-icon-of-sun-flat-symbol-on-white-vector-23926736.jpg'); */
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -201,7 +199,7 @@
 .weather-status-day3before{
     width: 85%;
     height: auto;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin-left: 15px;
     display: flex;
     align-items: center;
@@ -221,7 +219,7 @@
     justify-content: center; */
     /* padding-top: 45px; */
     font-size: 450%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 .temp-symbol-inner{
     display: flex;
@@ -233,7 +231,7 @@
 .otherweather-details-outer{
     width: 100%;
     height: auto;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     position: absolute;
     bottom: 10%;
 }
@@ -279,7 +277,7 @@
 .weathercard2-date{
     width: auto;
     height: auto;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin: 5px 25px;
     position: absolute;
     font-weight: bold;
@@ -288,7 +286,7 @@
 .weather-status-day2before{
     width: 85%;
     height: auto;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin-left: 15px;
     display: flex;
     align-items: center;
@@ -327,7 +325,7 @@
 .weather-status-day1before{
     width: 85%;
     height: auto;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin-left: 15px;
     display: flex;
     align-items: center;
@@ -341,7 +339,7 @@
 .weathercard1-date{
     width: auto;
     height: auto;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin: 5px 25px;
     position: absolute;
     font-weight: bold;

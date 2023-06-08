@@ -32,284 +32,21 @@ let windInKph ;
    longi=position.coords.longitude;
    console.log("lati "+lati);
    console.log("longi "+longi);
+   getCurrentLocationPastData();
   
   })
+//=====================================Function to fetch data according to geolocation =======================================
 
-  // fetch(
-   
-
-  //   // ${searchedLocation}
-  //    //`http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(3)}`,
-
-  //    //`http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}`,
-  //    `http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}`,
-  //    {
-  //       method : "GET",
-  //       mode : "cors"
-  //    }
-  // ).then(response => {
-  //    return response.json();
-  // }).then(data => {
-
-  //    console.log(data);
-      
-  //    let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
-  //    let day = weekday[d.getDay()];
-  //    let month = months[d.getMonth()];
-  //    console.log(data.location.name+",    "+data.location.region);
-  //    console.log(day);
-  //    // Display location
-
-  //    $(".town-region").text(data.location.name+",    "+data.location.region);
-  //    $(".country").text(data.location.country);
-
-  //    // $(".country").text(formatDate(2));
-
-  //    //----------- Inside weather card- 3daysbefore -------------------------------
-
-  //    // Display date
-  //    $(".weathercard3-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
-
-  //    // Display condition image and temperature value
-
-  //    document.querySelector("#conditionimage-3daybefore").src = data.forecast.forecastday[0].day.condition.icon;
-   
-  //    tmpF=data.forecast.forecastday[0].day.maxtemp_f;
-  //    tmpC=data.forecast.forecastday[0].day.maxtemp_c;
-  //    windInKph =data.forecast.forecastday[0].day.maxwind_kph;
-  //    windInMph =data.forecast.forecastday[0].day.maxwind_mph;
-  //    $(".temp-value-day3before").text(tmpC+"°");
-  //    $(".tempInCelcius-day3before").css("color","#f77f00");
-
-  //    // Display weather condition status
-  //    $(".weather-status-day3before").text(data.forecast.forecastday[0].day.condition.text);
-
-  //    // Display Other details like wind, percipitation and humidity
-      
-  //    $(".windvalue-day3before").text("Wind : "+windInKph+" ");
-  //    $(".wind-kph-day3before").css("color","#f77f00");
-      
-  //    precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
-  //    precipIN = data.forecast.forecastday[0].day.totalprecip_in;
-  //    console.log(precipMM+"   "+precipIN);
-  //    $(".rainvalue-day3before").text("Percipitation : "+precipMM+" ");
-  //    $(".precip_mm-day3before").css("color","#f77f00");
-
-  //    $(".humidityvalue-day3before").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
-
-  //    visKm =data.forecast.forecastday[0].day.avgvis_km;
-  //    visMiles =data.forecast.forecastday[0].day.avgvis_miles;
-  //    $(".visibilityValue-day3before").text("Visibility : "+visKm+" ");
-  //    $(".vis_km-day3before").css("color","#f77f00");
-  //  });
-
+//=====================================fetch data of searched location =======================================
 
 $(".searchBtn").click(function () {
 
   
     let searchedLocation = textField.val();
-   //  console.log(searchedLocation);
-   // =====================================================Fetch 3daysbefore weather data===================================================
-    fetch(
 
-      // ${searchedLocation}
-       `http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(3)}`,
-
-       //`http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}`,
-       //`http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}&dt=${formatDate(3)}`,
-       {
-          method : "GET",
-          mode : "cors"
-       }
-    ).then(response => {
-       return response.json();
-    }).then(data => {
-      //  console.log(data);
-
-       
-         let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
-         let day = weekday[d.getDay()];
-         let month = months[d.getMonth()];
-         console.log(data.location.name+",    "+data.location.region);
-         console.log(day);
-         // Display location
-
-         $(".town-region").text(data.location.name+",    "+data.location.region);
-         $(".country").text(data.location.country);
-
-         // $(".country").text(formatDate(2));
-
-         //----------- Inside weather card- 3daysbefore -------------------------------
-
-         // Display date
-         $(".weathercard3-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
-
-         // Display condition image and temperature value
-
-         document.querySelector("#conditionimage-3daybefore").src = data.forecast.forecastday[0].day.condition.icon;
-       
-         tmpF=data.forecast.forecastday[0].day.maxtemp_f;
-         tmpC=data.forecast.forecastday[0].day.maxtemp_c;
-         windInKph =data.forecast.forecastday[0].day.maxwind_kph;
-         windInMph =data.forecast.forecastday[0].day.maxwind_mph;
-         $(".temp-value-day3before").text(tmpC+"°");
-         $(".tempInCelcius-day3before").css("color","#f77f00");
-
-         // Display weather condition status
-         $(".weather-status-day3before").text(data.forecast.forecastday[0].day.condition.text);
-
-         // Display Other details like wind, percipitation and humidity
-          
-         $(".windvalue-day3before").text("Wind : "+windInKph+" ");
-         $(".wind-kph-day3before").css("color","#f77f00");
-          
-         precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
-         precipIN = data.forecast.forecastday[0].day.totalprecip_in;
-         console.log(precipMM+"   "+precipIN);
-         $(".rainvalue-day3before").text("Percipitation : "+precipMM+" ");
-         $(".precip_mm-day3before").css("color","#f77f00");
-
-         $(".humidityvalue-day3before").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
-
-         visKm =data.forecast.forecastday[0].day.avgvis_km;
-         visMiles =data.forecast.forecastday[0].day.avgvis_miles;
-         $(".visibilityValue-day3before").text("Visibility : "+visKm+" ");
-         $(".vis_km-day3before").css("color","#f77f00");
-
-    });
-      //----------- Inside weather card- 3daysbefore -------------------------------
-
-// =====================================================Fetch 3daysbefore weather data===================================================
-
-
-// =====================================================Fetch 2daysbefore weather data===================================================
-fetch(
-
-   // ${searchedLocation}
-    `http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=panadura&dt=${formatDate(2)}`,
-    {
-       method : "GET",
-       mode : "cors"
-    }
- ).then(response => {
-    return response.json();
- }).then(data => {
-   //  console.log(data);
-
-    
-      let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
-      console.log("2daysbefore "+d);
-      let day = weekday[d.getDay()];
-      let month = months[d.getMonth()];
-
-      console.log(day);
-
-      //----------- Inside weather card- 2daysbefore -------------------------------
-
-      // Display date
-      $(".weathercard2-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
-
-      // Display condition image and temperature value
-
-      document.querySelector("#conditionimage-2daybefore").src = data.forecast.forecastday[0].day.condition.icon;
-    
-      tmpF=data.forecast.forecastday[0].day.maxtemp_f;
-      tmpC=data.forecast.forecastday[0].day.maxtemp_c;
-      windInKph =data.forecast.forecastday[0].day.maxwind_kph;
-      windInMph =data.forecast.forecastday[0].day.maxwind_mph;
-      $(".temp-value-day2before").text(tmpC+"°");
-      $(".tempInCelcius-day2before").css("color","#f77f00");
-
-      // Display weather condition status
-      $(".weather-status-day2before").text(data.forecast.forecastday[0].day.condition.text);
-
-      // Display Other details like wind, percipitation and humidity
-       
-      $(".windvalue-day2before").text("Wind : "+windInKph+" ");
-      $(".wind-kph-day2before").css("color","#f77f00");
-       
-      precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
-      precipIN = data.forecast.forecastday[0].day.totalprecip_in;
-      console.log(precipMM+"   "+precipIN);
-      $(".rainvalue-day2before").text("Percipitation : "+precipMM+" ");
-      $(".precip_mm-day2before").css("color","#f77f00");
-
-      $(".humidityvalue-day2before").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
-
-      visKm =data.forecast.forecastday[0].day.avgvis_km;
-      visMiles =data.forecast.forecastday[0].day.avgvis_miles;
-      $(".visibilityValue-day2before").text("Visibility : "+visKm+" ");
-      $(".vis_km-day2before").css("color","#f77f00");
-
- });
-   //----------- Inside weather card- 3daysbefore -------------------------------
-
-// =====================================================Fetch 2daysbefore weather data===================================================
-
-
-// =====================================================Fetch 2daysbefore weather data===================================================
-fetch(
-
-   // ${searchedLocation}
-    `http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=panadura&dt=${formatDate(1)}`,
-    {
-       method : "GET",
-       mode : "cors"
-    }
- ).then(response => {
-    return response.json();
- }).then(data => {
-    console.log(data);
-
-    
-      let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
-      console.log("1daysbefore "+d);
-      let day = weekday[d.getDay()];
-      let month = months[d.getMonth()];
-
-      console.log(day);
-
-      //----------- Inside weather card- 1daysbefore -------------------------------
-
-      // Display date
-      $(".weathercard1-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
-
-      // Display condition image and temperature value
-
-      document.querySelector("#conditionimage-1daybefore").src = data.forecast.forecastday[0].day.condition.icon;
-    
-      tmpF=data.forecast.forecastday[0].day.maxtemp_f;
-      tmpC=data.forecast.forecastday[0].day.maxtemp_c;
-      windInKph =data.forecast.forecastday[0].day.maxwind_kph;
-      windInMph =data.forecast.forecastday[0].day.maxwind_mph;
-      $(".temp-value-day1before").text(tmpC+"°");
-      $(".tempInCelcius-day1before").css("color","#f77f00");
-
-      // Display weather condition status
-      $(".weather-status-day1before").text(data.forecast.forecastday[0].day.condition.text);
-
-      // Display Other details like wind, percipitation and humidity
-       
-      $(".windvalue-day1before").text("Wind : "+windInKph+" ");
-      $(".wind-kph-day1before").css("color","#f77f00");
-       
-      precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
-      precipIN = data.forecast.forecastday[0].day.totalprecip_in;
-      console.log(precipMM+"   "+precipIN);
-      $(".rainvalue-day1before").text("Percipitation : "+precipMM+" ");
-      $(".precip_mm-day1before").css("color","#f77f00");
-
-      $(".humidityvalue-day1before").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
-
-      visKm =data.forecast.forecastday[0].day.avgvis_km;
-      visMiles =data.forecast.forecastday[0].day.avgvis_miles;
-      $(".visibilityValue-day1before").text("Visibility : "+visKm+" ");
-      $(".vis_km-day1before").css("color","#f77f00");
-
- });
-   //----------- Inside weather card- 1daysbefore -------------------------------
-
-// =====================================================Fetch 1daysbefore weather data===================================================
+    getday3beforedata(searchedLocation);
+    getday2beforedata(searchedLocation);
+    getday1beforedata(searchedLocation);
 
  });
 
@@ -574,3 +311,223 @@ function getTwelveHourFormat(d){
         else return (intValueofHour%12)+":"+d.getMinutes()+" PM";
      }
       }
+
+
+  //==============================================Function to get 3daysbefore weather data================================================================
+
+    function  getday3beforedata(searchedLocation){
+  
+     fetch(
+
+      // ${searchedLocation}
+       `http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(3)}`,
+       {
+          method : "GET",
+          mode : "cors"
+       }
+    ).then(response => {
+       return response.json();
+    }).then(data => {
+      //  console.log(data);
+
+       
+         let d = new Date(data.forecast.forecastday[0].date);
+         let day = weekday[d.getDay()];
+         let month = months[d.getMonth()];
+         console.log(data.location.name+",    "+data.location.region);
+         console.log(day);
+         // Display location
+
+         $(".town-region").text(data.location.name+",    "+data.location.region);
+         $(".country").text(data.location.country);
+
+         // $(".country").text(formatDate(2));
+
+         //----------- Inside weather card- 3daysbefore -------------------------------
+
+         // Display date
+         $(".weathercard3-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
+        // $(".dateAndTime").text((new Date(data.location.localtime)).toDateString()+" "+getTwelveHourAndMinuteFormat(new Date(data.location.localtime)));
+         // Display condition image and temperature value
+
+         document.querySelector("#conditionimage-3daybefore").src = data.forecast.forecastday[0].day.condition.icon;
+       
+         tmpF=data.forecast.forecastday[0].day.maxtemp_f;
+         tmpC=data.forecast.forecastday[0].day.maxtemp_c;
+         windInKph =data.forecast.forecastday[0].day.maxwind_kph;
+         windInMph =data.forecast.forecastday[0].day.maxwind_mph;
+         $(".temp-value-day3before").text(tmpC+"°");
+         $(".tempInCelcius-day3before").css("color","#f77f00");
+
+         // Display weather condition status
+         $(".weather-status-day3before").text(data.forecast.forecastday[0].day.condition.text);
+
+         // Display Other details like wind, percipitation and humidity
+          
+         $(".windvalue-day3before").text("Wind : "+windInKph+" ");
+         $(".wind-kph-day3before").css("color","#f77f00");
+          
+         precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
+         precipIN = data.forecast.forecastday[0].day.totalprecip_in;
+         console.log(precipMM+"   "+precipIN);
+         $(".rainvalue-day3before").text("Percipitation : "+precipMM+" ");
+         $(".precip_mm-day3before").css("color","#f77f00");
+
+         $(".humidityvalue-day3before").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
+
+         visKm =data.forecast.forecastday[0].day.avgvis_km;
+         visMiles =data.forecast.forecastday[0].day.avgvis_miles;
+         $(".visibilityValue-day3before").text("Visibility : "+visKm+" ");
+         $(".vis_km-day3before").css("color","#f77f00");
+
+    });
+      //----------- Inside weather card- 3daysbefore -------------------------------
+}
+
+
+  //==============================================Function to get 2daysbefore weather data================================================================
+
+function  getday2beforedata(searchedLocation){
+
+    fetch(
+
+        `http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=panadura&dt=${formatDate(2)}`,
+        {
+            method : "GET",
+            mode : "cors"
+        }
+        ).then(response => {
+            return response.json();
+        }).then(data => {
+
+   
+        let d = new Date(data.forecast.forecastday[0].date);
+        console.log("2daysbefore "+d);
+        let day = weekday[d.getDay()];
+        let month = months[d.getMonth()];
+
+     //----------- Inside weather card- 2daysbefore -------------------------------
+
+      // Display date
+        $(".weathercard2-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
+
+        // Display condition image and temperature value
+
+        document.querySelector("#conditionimage-2daybefore").src = data.forecast.forecastday[0].day.condition.icon;
+   
+        tmpF=data.forecast.forecastday[0].day.maxtemp_f;
+        tmpC=data.forecast.forecastday[0].day.maxtemp_c;
+        windInKph =data.forecast.forecastday[0].day.maxwind_kph;
+        windInMph =data.forecast.forecastday[0].day.maxwind_mph;
+        $(".temp-value-day2before").text(tmpC+"°");
+        $(".tempInCelcius-day2before").css("color","#f77f00");
+
+        // Display weather condition status
+        $(".weather-status-day2before").text(data.forecast.forecastday[0].day.condition.text);
+
+        // Display Other details like wind, percipitation and humidity
+      
+        $(".windvalue-day2before").text("Wind : "+windInKph+" ");
+        $(".wind-kph-day2before").css("color","#f77f00");
+      
+        precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
+        precipIN = data.forecast.forecastday[0].day.totalprecip_in;
+        console.log(precipMM+"   "+precipIN);
+        $(".rainvalue-day2before").text("Percipitation : "+precipMM+" ");
+        $(".precip_mm-day2before").css("color","#f77f00");
+
+        $(".humidityvalue-day2before").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
+
+        visKm =data.forecast.forecastday[0].day.avgvis_km;
+        visMiles =data.forecast.forecastday[0].day.avgvis_miles;
+        $(".visibilityValue-day2before").text("Visibility : "+visKm+" ");
+        $(".vis_km-day2before").css("color","#f77f00");
+
+    });
+}
+
+
+function getday1beforedata(searchedLocation){
+      fetch(
+
+        // ${searchedLocation}
+         `http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=panadura&dt=${formatDate(1)}`,
+          {
+            method : "GET",
+            mode : "cors"
+          }
+          ).then(response => {
+               return response.json();
+          }).then(data => {
+         console.log(data);
+          let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
+          console.log("1daysbefore "+d);
+          let day = weekday[d.getDay()];
+          let month = months[d.getMonth()];
+     
+           console.log(day);
+     
+        //----------- Inside weather card- 1daysbefore -------------------------------
+     
+           // Display date
+           $(".weathercard1-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
+     
+           // Display condition image and temperature value
+     
+           document.querySelector("#conditionimage-1daybefore").src = data.forecast.forecastday[0].day.condition.icon;
+         
+           tmpF=data.forecast.forecastday[0].day.maxtemp_f;
+           tmpC=data.forecast.forecastday[0].day.maxtemp_c;
+           windInKph =data.forecast.forecastday[0].day.maxwind_kph;
+           windInMph =data.forecast.forecastday[0].day.maxwind_mph;
+           $(".temp-value-day1before").text(tmpC+"°");
+           $(".tempInCelcius-day1before").css("color","#f77f00");
+     
+           // Display weather condition status
+           $(".weather-status-day1before").text(data.forecast.forecastday[0].day.condition.text);
+     
+           // Display Other details like wind, percipitation and humidity
+            
+           $(".windvalue-day1before").text("Wind : "+windInKph+" ");
+           $(".wind-kph-day1before").css("color","#f77f00");
+            
+           precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
+           precipIN = data.forecast.forecastday[0].day.totalprecip_in;
+           console.log(precipMM+"   "+precipIN);
+           $(".rainvalue-day1before").text("Percipitation : "+precipMM+" ");
+           $(".precip_mm-day1before").css("color","#f77f00");
+     
+           $(".humidityvalue-day1before").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
+     
+           visKm =data.forecast.forecastday[0].day.avgvis_km;
+           visMiles =data.forecast.forecastday[0].day.avgvis_miles;
+           $(".visibilityValue-day1before").text("Visibility : "+visKm+" ");
+           $(".vis_km-day1before").css("color","#f77f00");
+     
+      });
+}
+
+
+     //===================================get current city name =========================================
+
+function getCurrentLocationPastData(){
+      fetch(
+
+        // ${searchedLocation}
+         `http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}`,
+         {
+            method : "GET",
+            mode : "cors"
+         }
+          ).then(response => {
+               return response.json();
+          }).then(data => {
+      
+        let searchedLocation = data.location.name;
+        getday3beforedata(searchedLocation);
+        getday2beforedata(searchedLocation);
+        getday1beforedata(searchedLocation);
+
+        ///return data.location.name;
+    });
+}

@@ -22,219 +22,34 @@ let windInKph ;
   let visMiles;
   let pastDates;
 
+
+  let lati ;
+  let longi ;
+//=====================================Function to fetch data according to geolocation =======================================
+
+  navigator.geolocation.getCurrentPosition(function (position){
+   console.log(position);
+   lati=position.coords.latitude;
+   longi=position.coords.longitude;
+   console.log("lati "+lati);
+   console.log("longi "+longi);
+   getCurrentLocationPastData();
+  
+  })
+
 $(".searchBtn").click(function () {
 
 
     let searchedLocation = textField.val();
-   //  console.log(searchedLocation);
-   // =====================================================Fetch 1dayafter weather data===================================================
-    fetch(
 
-      // ${searchedLocation}
-       `http://api.weatherapi.com/v1/forecast.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(1)}`,
-       {
-          method : "GET",
-          mode : "cors"
-       }
-    ).then(response => {
-       return response.json();
-    }).then(data => {
-      //  console.log(data);
+    getday1afterdata(searchedLocation);
+    getday2afterdata(searchedLocation);
+    getday3afterdata(searchedLocation);
 
-       
-         let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
-         let day = weekday[d.getDay()];
-         let month = months[d.getMonth()];
-         console.log("3daysbefore "+d);
-         console.log(day);
-         // Display location
-
-         $(".town-region").text(data.location.name+",    "+data.location.region);
-         $(".country").text(data.location.country);
-
-         // $(".country").text(formatDate(2));
-
-         //----------- Inside weather card- 1dayafter-------------------------------
-
-         // Display date
-         $(".weathercard1-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
-
-         // Display condition image and temperature value
-
-         document.querySelector("#conditionimage-day1after").src = data.forecast.forecastday[0].day.condition.icon;
-       
-         tmpF=data.forecast.forecastday[0].day.maxtemp_f;
-         tmpC=data.forecast.forecastday[0].day.maxtemp_c;
-         windInKph =data.forecast.forecastday[0].day.maxwind_kph;
-         windInMph =data.forecast.forecastday[0].day.maxwind_mph;
-         $(".temp-value-day1after").text(tmpC+"°");
-         $(".tempInCelcius-day1after").css("color","#f77f00");
-
-         // Display weather condition status
-         $(".weather-status-day1after").text(data.forecast.forecastday[0].day.condition.text);
-
-         // Display Other details like wind, percipitation and humidity
-          
-         $(".windvalue-day1after").text("Wind : "+windInKph+" ");
-         $(".wind-kph-day1after").css("color","#f77f00");
-          
-         precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
-         precipIN = data.forecast.forecastday[0].day.totalprecip_in;
-         console.log(precipMM+"   "+precipIN);
-         $(".rainvalue-day1after").text("Percipitation : "+precipMM+" ");
-         $(".precip_mm-day1after").css("color","#f77f00");
-
-         $(".humidityvalue-day1after").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
-
-         visKm =data.forecast.forecastday[0].day.avgvis_km;
-         visMiles =data.forecast.forecastday[0].day.avgvis_miles;
-         $(".visibilityValue-day1after").text("Visibility : "+visKm+" ");
-         $(".vis_km-day1after").css("color","#f77f00");
-
-    });
-      //----------- Inside weather card- 1dayafter -------------------------------
-
-// =====================================================Fetch 1daysafter weather data===================================================
-
-
-// =====================================================Fetch 2daysafter weather data===================================================
-fetch(
-
-   // ${searchedLocation}
-    `http://api.weatherapi.com/v1/forecast.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(2)}`,
-    {
-       method : "GET",
-       mode : "cors"
-    }
- ).then(response => {
-    return response.json();
- }).then(data => {
-   //  console.log(data);
-
-    
-      let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
-      console.log("2daysbefore "+d);
-      let day = weekday[d.getDay()];
-      let month = months[d.getMonth()];
-
-      console.log(day);
-
-      //----------- Inside weather card- 2daysafter -------------------------------
-
-      // Display date
-      $(".weathercard2-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
-
-      // Display condition image and temperature value
-
-      document.querySelector("#conditionimage-day2after").src = data.forecast.forecastday[0].day.condition.icon;
-    
-      tmpF=data.forecast.forecastday[0].day.maxtemp_f;
-      tmpC=data.forecast.forecastday[0].day.maxtemp_c;
-      windInKph =data.forecast.forecastday[0].day.maxwind_kph;
-      windInMph =data.forecast.forecastday[0].day.maxwind_mph;
-      $(".temp-value-day2after").text(tmpC+"°");
-      $(".tempInCelcius-day2after").css("color","#f77f00");
-
-      // Display weather condition status
-      $(".weather-status-day2after").text(data.forecast.forecastday[0].day.condition.text);
-
-      // Display Other details like wind, percipitation and humidity
-       
-      $(".windvalue-day2after").text("Wind : "+windInKph+" ");
-      $(".wind-kph-day2after").css("color","#f77f00");
-       
-      precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
-      precipIN = data.forecast.forecastday[0].day.totalprecip_in;
-      console.log(precipMM+"   "+precipIN);
-      $(".rainvalue-day2after").text("Percipitation : "+precipMM+" ");
-      $(".precip_mm-day2after").css("color","#f77f00");
-
-      $(".humidityvalue-day2after").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
-
-      visKm =data.forecast.forecastday[0].day.avgvis_km;
-      visMiles =data.forecast.forecastday[0].day.avgvis_miles;
-      $(".visibilityValue-day2after").text("Visibility : "+visKm+" ");
-      $(".vis_km-day2after").css("color","#f77f00");
 
  });
 
 
-
-   //----------- Inside weather card- 2daysafter -------------------------------
-
-// =====================================================Fetch 2daysafter weather data===================================================
-
-
-// =====================================================Fetch 3daysafter weather data===================================================
-fetch(
-
-   // ${searchedLocation}
-    `http://api.weatherapi.com/v1/forecast.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(3)}`,
-    {
-       method : "GET",
-       mode : "cors"
-    }
- ).then(response => {
-    return response.json();
- }).then(data => {
-    console.log(data);
-
-    
-      let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
-      console.log("1daysbefore "+d);
-      let day = weekday[d.getDay()];
-      let month = months[d.getMonth()];
-
-      console.log(day);
-
-      //----------- Inside weather card- 3daysafter -------------------------------
-
-      // Display date
-      $(".weathercard3-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
-
-      // Display condition image and temperature value
-
-      document.querySelector("#conditionimage-day3after").src = data.forecast.forecastday[0].day.condition.icon;
-    
-      tmpF=data.forecast.forecastday[0].day.maxtemp_f;
-      tmpC=data.forecast.forecastday[0].day.maxtemp_c;
-      windInKph =data.forecast.forecastday[0].day.maxwind_kph;
-      windInMph =data.forecast.forecastday[0].day.maxwind_mph;
-      $(".temp-value-day3after").text(tmpC+"°");
-      $(".tempInCelcius-day3after").css("color","#f77f00");
-
-      // Display weather condition status
-      $(".weather-status-day3after").text(data.forecast.forecastday[0].day.condition.text);
-
-      // Display Other details like wind, percipitation and humidity
-       
-      $(".windvalue-day3after").text("Wind : "+windInKph+" ");
-      $(".wind-kph-day3after").css("color","#f77f00");
-       
-      precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
-      precipIN = data.forecast.forecastday[0].day.totalprecip_in;
-      console.log(precipMM+"   "+precipIN);
-      $(".rainvalue-day3after").text("Percipitation : "+precipMM+" ");
-      $(".precip_mm-day3after").css("color","#f77f00");
-
-      $(".humidityvalue-day3after").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
-
-      visKm =data.forecast.forecastday[0].day.avgvis_km;
-      visMiles =data.forecast.forecastday[0].day.avgvis_miles;
-      $(".visibilityValue-day3after").text("Visibility : "+visKm+" ");
-      $(".vis_km-day3after").css("color","#f77f00");
-
- });
-
-
-
-   //----------- Inside weather card- 3daysafter -------------------------------
-
-// =====================================================Fetch 3daysafter weather data===================================================
-
- });
-
-// =====================================================Button click function for 1daysafter weather data=================================================== 
 
 // Click btn function for fahrenheitBtn
  $(".tempInFahrenheit-day1after").click(function (){
@@ -461,4 +276,222 @@ function formatDate(num) {
    return [year, month, day].join('-');
  }
 
- // =====================================================Function to get any previous date in yyyy-mm-dd format=================================================== 
+ // =====================================================Function to get any previous date in yyyy-mm-dd format===================================================
+ 
+ function  getday1afterdata(searchedLocation){
+  fetch(
+
+    // ${searchedLocation}
+     `http://api.weatherapi.com/v1/forecast.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(1)}`,
+     {
+        method : "GET",
+        mode : "cors"
+     }
+  ).then(response => {
+     return response.json();
+  }).then(data => {
+    //  console.log(data);
+
+     
+       let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
+       let day = weekday[d.getDay()];
+       let month = months[d.getMonth()];
+       console.log("3daysbefore "+d);
+       console.log(day);
+       // Display location
+
+       $(".town-region").text(data.location.name+",    "+data.location.region);
+       $(".country").text(data.location.country);
+
+       // $(".country").text(formatDate(2));
+
+       //----------- Inside weather card- 1dayafter-------------------------------
+
+       // Display date
+       $(".weathercard1-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
+
+       // Display condition image and temperature value
+
+       document.querySelector("#conditionimage-day1after").src = data.forecast.forecastday[0].day.condition.icon;
+     
+       tmpF=data.forecast.forecastday[0].day.maxtemp_f;
+       tmpC=data.forecast.forecastday[0].day.maxtemp_c;
+       windInKph =data.forecast.forecastday[0].day.maxwind_kph;
+       windInMph =data.forecast.forecastday[0].day.maxwind_mph;
+       $(".temp-value-day1after").text(tmpC+"°");
+       $(".tempInCelcius-day1after").css("color","#f77f00");
+
+       // Display weather condition status
+       $(".weather-status-day1after").text(data.forecast.forecastday[0].day.condition.text);
+
+       // Display Other details like wind, percipitation and humidity
+        
+       $(".windvalue-day1after").text("Wind : "+windInKph+" ");
+       $(".wind-kph-day1after").css("color","#f77f00");
+        
+       precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
+       precipIN = data.forecast.forecastday[0].day.totalprecip_in;
+       console.log(precipMM+"   "+precipIN);
+       $(".rainvalue-day1after").text("Percipitation : "+precipMM+" ");
+       $(".precip_mm-day1after").css("color","#f77f00");
+
+       $(".humidityvalue-day1after").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
+
+       visKm =data.forecast.forecastday[0].day.avgvis_km;
+       visMiles =data.forecast.forecastday[0].day.avgvis_miles;
+       $(".visibilityValue-day1after").text("Visibility : "+visKm+" ");
+       $(".vis_km-day1after").css("color","#f77f00");
+
+  });
+ }
+
+ //=====================================
+
+ function getday2afterdata(searchedLocation){
+  fetch(
+
+    // ${searchedLocation}
+     `http://api.weatherapi.com/v1/forecast.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(2)}`,
+     {
+        method : "GET",
+        mode : "cors"
+     }
+  ).then(response => {
+     return response.json();
+  }).then(data => {
+    //  console.log(data);
+ 
+     
+       let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
+       console.log("2daysbefore "+d);
+       let day = weekday[d.getDay()];
+       let month = months[d.getMonth()];
+ 
+       console.log(day);
+ 
+       //----------- Inside weather card- 2daysafter -------------------------------
+ 
+       // Display date
+       $(".weathercard2-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
+ 
+       // Display condition image and temperature value
+ 
+       document.querySelector("#conditionimage-day2after").src = data.forecast.forecastday[0].day.condition.icon;
+     
+       tmpF=data.forecast.forecastday[0].day.maxtemp_f;
+       tmpC=data.forecast.forecastday[0].day.maxtemp_c;
+       windInKph =data.forecast.forecastday[0].day.maxwind_kph;
+       windInMph =data.forecast.forecastday[0].day.maxwind_mph;
+       $(".temp-value-day2after").text(tmpC+"°");
+       $(".tempInCelcius-day2after").css("color","#f77f00");
+ 
+       // Display weather condition status
+       $(".weather-status-day2after").text(data.forecast.forecastday[0].day.condition.text);
+ 
+       // Display Other details like wind, percipitation and humidity
+        
+       $(".windvalue-day2after").text("Wind : "+windInKph+" ");
+       $(".wind-kph-day2after").css("color","#f77f00");
+        
+       precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
+       precipIN = data.forecast.forecastday[0].day.totalprecip_in;
+       console.log(precipMM+"   "+precipIN);
+       $(".rainvalue-day2after").text("Percipitation : "+precipMM+" ");
+       $(".precip_mm-day2after").css("color","#f77f00");
+ 
+       $(".humidityvalue-day2after").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
+ 
+       visKm =data.forecast.forecastday[0].day.avgvis_km;
+       visMiles =data.forecast.forecastday[0].day.avgvis_miles;
+       $(".visibilityValue-day2after").text("Visibility : "+visKm+" ");
+       $(".vis_km-day2after").css("color","#f77f00");
+ 
+  });
+ }
+
+ //=======================================
+
+ function getday3afterdata(searchedLocation){
+  fetch(
+
+    // ${searchedLocation}
+     `http://api.weatherapi.com/v1/forecast.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(3)}`,
+     {
+        method : "GET",
+        mode : "cors"
+     }
+  ).then(response => {
+     return response.json();
+  }).then(data => {
+     console.log(data);
+ 
+     
+       let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
+       console.log("1daysbefore "+d);
+       let day = weekday[d.getDay()];
+       let month = months[d.getMonth()];
+ 
+       console.log(day);
+ 
+       //----------- Inside weather card- 3daysafter -------------------------------
+ 
+       // Display date
+       $(".weathercard3-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
+ 
+       // Display condition image and temperature value
+ 
+       document.querySelector("#conditionimage-day3after").src = data.forecast.forecastday[0].day.condition.icon;
+     
+       tmpF=data.forecast.forecastday[0].day.maxtemp_f;
+       tmpC=data.forecast.forecastday[0].day.maxtemp_c;
+       windInKph =data.forecast.forecastday[0].day.maxwind_kph;
+       windInMph =data.forecast.forecastday[0].day.maxwind_mph;
+       $(".temp-value-day3after").text(tmpC+"°");
+       $(".tempInCelcius-day3after").css("color","#f77f00");
+ 
+       // Display weather condition status
+       $(".weather-status-day3after").text(data.forecast.forecastday[0].day.condition.text);
+ 
+       // Display Other details like wind, percipitation and humidity
+        
+       $(".windvalue-day3after").text("Wind : "+windInKph+" ");
+       $(".wind-kph-day3after").css("color","#f77f00");
+        
+       precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
+       precipIN = data.forecast.forecastday[0].day.totalprecip_in;
+       console.log(precipMM+"   "+precipIN);
+       $(".rainvalue-day3after").text("Percipitation : "+precipMM+" ");
+       $(".precip_mm-day3after").css("color","#f77f00");
+ 
+       $(".humidityvalue-day3after").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
+ 
+       visKm =data.forecast.forecastday[0].day.avgvis_km;
+       visMiles =data.forecast.forecastday[0].day.avgvis_miles;
+       $(".visibilityValue-day3after").text("Visibility : "+visKm+" ");
+       $(".vis_km-day3after").css("color","#f77f00");
+ 
+  });
+ }
+
+ //====================
+ function getCurrentLocationPastData(){
+  fetch(
+
+    // ${searchedLocation}
+     `http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}`,
+     {
+        method : "GET",
+        mode : "cors"
+     }
+      ).then(response => {
+           return response.json();
+      }).then(data => {
+  
+    let searchedLocation = data.location.name;
+    getday3afterdata(searchedLocation);
+    getday2afterdata(searchedLocation);
+    getday1afterdata(searchedLocation);
+
+    ///return data.location.name;
+});
+ }
