@@ -10,19 +10,106 @@ let tmpC = $(".celcius");
 let myArray;
 var num;
 
+let lati ;
+let longi ;
+//=====================================Function to fetch data according to geolocation =======================================
 
-const successCallback = (position) => {
-   console.log("current postion : "+position);
- };
- 
- const errorCallback = (error) => {
-   console.log(error);
- };
- 
- navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+navigator.geolocation.getCurrentPosition(function (position){
+   console.log(position);
+   lati=position.coords.latitude;
+   longi=position.coords.longitude;
+   console.log("lati "+lati);
+   console.log("longi "+longi);
 
+ //------------------------------- Function to fetch data -------------------------------------------------------
+
+ let searchedLocation = textField.val();
+ console.log(searchedLocation);
+ fetch(
+
+   // ${searchedLocation}
+   `http://api.weatherapi.com/v1/current.json?q=${lati},${longi}&key=e0939844aa0b4acaaa3153652233005`,
+    {
+       method : "GET",
+       mode : "cors"
+    }
+ ).then(response => {
+    return response.json();
+ }).then(data => {
+    console.log(data);
+
+   $(".conditiondescription").text(data.current.condition.text);
+    $(".dateAndTime").text((new Date(data.location.localtime)).toDateString()+" "+getTwelveHourAndMinuteFormat(new Date(data.location.localtime)));
+    $(".town").text(data.location.name+",    ");
+    $(".region").text(data.location.region);
+    $(".country").text(data.location.country);
+
+tmpF=data.current.temp_f;
+tmpC=data.current.temp_c;
+ $(".temp-value-inner").text(tmpC+"°");
+ $(".celcius").css("color","#f77f00");
+ $(".windvalue").text(data.current.wind_kph+" kph");
+ $(".rainvalue").text(data.current.precip_mm+" mm");
+ $(".humidityvalue").text(data.current.humidity+" %");
+ document.querySelector("#conimg").src = data.current.condition.icon;
+// $("#conimg").src=data.current.condition.icon;
+
+ // ================================= Hourly weather ============================================================
+
+ fetch(
+
+   `http://api.weatherapi.com/v1/forecast.json?q=${lati},${longi}&key=e0939844aa0b4acaaa3153652233005`,
+   {
+      method : "GET",
+      mode : "cors"
+   }
+).then(response => {
+   return response.json();
+  }).then(data1 => {
+
+   let currentHour =new Date(data1.location.localtime).getHours();
+  //--------------------------------- hour 1 -------------------------------------------------- 
+     //$("#hour1").text(new Date(data1.forecast.forecastday[0].hour[0].time).getHours()+".00 ");
+     $("#hour1").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[currentHour+1].time)));
+
+     const tem =data1.forecast.forecastday[0].hour[currentHour+1].temp_c;
+     $("#hour1Value").text(data1.forecast.forecastday[0].hour[currentHour+1].temp_c+"°C");
+     document.querySelector("#hour1image").src = data1.forecast.forecastday[0].hour[currentHour+1].condition.icon;
+    
+  //--------------------------------- hour 2 -------------------------------------------------- 
+  $("#hour2").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[currentHour+2].time)));
+     //const tem =data2.forecast.forecastday[0].hour[0].temp_c;
+     $("#hour2Value").text(data1.forecast.forecastday[0].hour[currentHour+2].temp_c+"°C");
+     document.querySelector("#hour2image").src = data1.forecast.forecastday[0].hour[currentHour+2].condition.icon;
+    
+  //--------------------------------- hour 3 -------------------------------------------------- 
+  $("#hour3").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[currentHour+3].time)));
+     $("#hour3Value").text(data1.forecast.forecastday[0].hour[currentHour+3].temp_c+"°C");
+      document.querySelector("#hour3image").src = data1.forecast.forecastday[0].hour[currentHour+3].condition.icon;
+
+  //--------------------------------- hour 4 -------------------------------------------------- 
+  $("#hour4").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[currentHour+4].time)));
+     $("#hour4Value").text(data1.forecast.forecastday[0].hour[currentHour+4].temp_c+"°C");
+     document.querySelector("#hour4image").src = data1.forecast.forecastday[0].hour[currentHour+4].condition.icon;
+
+  //--------------------------------- hour 5 -------------------------------------------------- 
+  $("#hour5").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[currentHour+5].time)));
+   $("#hour5Value").text(data1.forecast.forecastday[0].hour[currentHour+5].temp_c+"°C");
+   document.querySelector("#hour5image").src = data1.forecast.forecastday[0].hour[currentHour+5].condition.icon;
+
+   //--------------------------------- hour 6 -------------------------------------------------- 
+   $("#hour6").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[currentHour+6].time)));
+   $("#hour6Value").text(data1.forecast.forecastday[0].hour[currentHour+6].temp_c+"°C");
+   document.querySelector("#hour6image").src = data1.forecast.forecastday[0].hour[currentHour+6].condition.icon;
+  })
+
+ });
+
+});
 
 $(".searchBtn").click(function () {
+
+   window.location.href = "currentweather.html";
 
     let searchedLocation = textField.val();
     console.log(searchedLocation);
@@ -37,10 +124,18 @@ $(".searchBtn").click(function () {
     ).then(response => {
        return response.json();
     }).then(data => {
+
+      var favoritemovie = "Shrek";
+sessionStorage.setItem("favoriteMovie", favoritemovie);
        console.log(data);
        const arr = data.location.localtime;
        myArray= arr.substr(arr.indexOf(" ")+1,2);
         num = parseInt(myArray);
+
+        let dd = new Date(data.location.localtime);
+        let hr = dd.getHours();
+        console.log("Sanjeewa");
+        console.log("hour :"+hr);
        let t1;
          if((num+4)>=12 & (num+4)<=24){
             t1="PM";
@@ -54,9 +149,6 @@ $(".searchBtn").click(function () {
        $(".town").text(data.location.name+",    ");
        $(".region").text(data.location.region);
        $(".country").text(data.location.country);
-   //   im.(data.current.condition.icon);
-    //    wind.text(data.current.wind_kph);
-   //  const tt=$(".temp-value-inner");
    
    tmpF=data.current.temp_f;
    tmpC=data.current.temp_c;
@@ -66,27 +158,14 @@ $(".searchBtn").click(function () {
     $(".rainvalue").text(data.current.precip_mm+" mm");
     $(".humidityvalue").text(data.current.humidity+" %");
     document.querySelector("#conimg").src = data.current.condition.icon;
-   // $("#conimg").src=data.current.condition.icon;
-
-console.log(myArray);
-   console.log(parseInt(myArray)+1);
-   if((num>=0) & (num <=12) ){
-      console.log(myArray+"AM");
-   }else{
-      console.log(myArray+"PM");
-   }
-
-//   hourly forcaste
-
 
     });
 
-    // Hourly weather for 1st hour
+    // ================================= Hourly weather ============================================================
 
     fetch(
 
-      // ${searchedLocation}
-       `http://api.weatherapi.com/v1/forecast.json?q=panadura&key=e0939844aa0b4acaaa3153652233005&hour=${num+1}`,
+       `http://api.weatherapi.com/v1/forecast.json?q=${lati},${longi}&key=e0939844aa0b4acaaa3153652233005`,
        {
           method : "GET",
           mode : "cors"
@@ -95,173 +174,43 @@ console.log(myArray);
        return response.json();
       }).then(data1 => {
 
-         let t1;
-         if((num+1)>=12 & (num+1)<=24){
-            t1="PM";
-         }
-         else{
-            t1="AM";
-         }
-         $("#hour1").text((num+1).toString()+".00 "+t1);
-         const tem =data1.forecast.forecastday[0].hour[0].temp_c;
-         $("#hour1Value").text(data1.forecast.forecastday[0].hour[0].temp_c+"°C");
-         document.querySelector("#hour1image").src = data1.forecast.forecastday[0].hour[0].condition.icon;
+         let currentHour =new Date(data1.location.localtime).getHours();
+      //--------------------------------- hour 1 -------------------------------------------------- 
+         //$("#hour1").text(new Date(data1.forecast.forecastday[0].hour[0].time).getHours()+".00 ");
+         $("#hour1").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[currentHour+1].time)));
+
+         const tem =data1.forecast.forecastday[0].hour[currentHour+1].temp_c;
+         $("#hour1Value").text(data1.forecast.forecastday[0].hour[currentHour+1].temp_c+"°C");
+         document.querySelector("#hour1image").src = data1.forecast.forecastday[0].hour[currentHour+1].condition.icon;
         
-         console.log((num+1)+"PM");
-         console.log(tem);
+      //--------------------------------- hour 2 -------------------------------------------------- 
+      $("#hour2").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[new Date(data1.location.localtime).getHours()+2].time)));
+         //const tem =data2.forecast.forecastday[0].hour[0].temp_c;
+         $("#hour2Value").text(data1.forecast.forecastday[0].hour[1].temp_c+"°C");
+         document.querySelector("#hour2image").src = data1.forecast.forecastday[0].hour[1].condition.icon;
+        
+      //--------------------------------- hour 3 -------------------------------------------------- 
+      $("#hour3").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[new Date(data1.location.localtime).getHours()+3].time)));
+         $("#hour3Value").text(data1.forecast.forecastday[0].hour[2].temp_c+"°C");
+          document.querySelector("#hour3image").src = data1.forecast.forecastday[0].hour[2].condition.icon;
+
+      //--------------------------------- hour 4 -------------------------------------------------- 
+      $("#hour4").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[new Date(data1.location.localtime).getHours()+4].time)));
+         $("#hour4Value").text(data1.forecast.forecastday[0].hour[3].temp_c+"°C");
+         document.querySelector("#hour4image").src = data1.forecast.forecastday[0].hour[3].condition.icon;
+
+      //--------------------------------- hour 5 -------------------------------------------------- 
+      $("#hour5").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[new Date(data1.location.localtime).getHours()+5].time)));
+       $("#hour5Value").text(data1.forecast.forecastday[0].hour[4].temp_c+"°C");
+       document.querySelector("#hour5image").src = data1.forecast.forecastday[0].hour[4].condition.icon;
+
+       //--------------------------------- hour 6 -------------------------------------------------- 
+       $("#hour6").text(getTwelveHourFormat(new Date(data1.forecast.forecastday[0].hour[new Date(data1.location.localtime).getHours()+6].time)));
+       $("#hour6Value").text(data1.forecast.forecastday[0].hour[5].temp_c+"°C");
+       document.querySelector("#hour6image").src = data1.forecast.forecastday[0].hour[5].condition.icon;
       })
-
-      // Hourly weather for 2nd hour
-
-      fetch(
-
-         
-          `http://api.weatherapi.com/v1/forecast.json?q=panadura&key=e0939844aa0b4acaaa3153652233005&hour=${(num+2)}`,
-          {
-             method : "GET",
-             mode : "cors"
-          }
-       ).then(response => {
-          return response.json();
-         }).then(data2 => {
-
-            console.log("second hr :"+(num+2));
-            let t1;
-            if((num+2)>=12 & (num+2)<=24){
-               t1="PM";
-            }
-            else{
-               t1="AM";
-            }
-            $("#hour2").text((num+2).toString()+".00 "+t1);
-            const tem =data2.forecast.forecastday[0].hour[0].temp_c;
-            $("#hour2Value").text(data2.forecast.forecastday[0].hour[0].temp_c+"°C");
-            document.querySelector("#hour2image").src = data2.forecast.forecastday[0].hour[0].condition.icon;
-           
-            console.log((num+2)+"AM");
-            console.log(tem);
-         })
-
-          // Hourly weather for 3nd hour
-
-      fetch(
-
-         
-         `http://api.weatherapi.com/v1/forecast.json?q=panadura&key=e0939844aa0b4acaaa3153652233005&hour=${num+3}`,
-         {
-            method : "GET",
-            mode : "cors"
-         }
-      ).then(response => {
-         return response.json();
-        }).then(data3 => {
-
-         let t1;
-         if((num+3)>=12 & (num+3)<=24){
-            t1="PM";
-         }
-         else{
-            t1="AM";
-         }
-           $("#hour3").text((num+3).toString()+".00 "+t1);
-           const tem =data3.forecast.forecastday[0].hour[0].temp_c;
-           $("#hour3Value").text(data3.forecast.forecastday[0].hour[0].temp_c+"°C");
-           document.querySelector("#hour3image").src = data3.forecast.forecastday[0].hour[0].condition.icon;
-          
-           console.log((num+3)+"AM");
-           console.log(tem);
-        })
-
-           // Hourly weather for 4th hour
-
-      fetch(
-
-         
-         `http://api.weatherapi.com/v1/forecast.json?q=panadura&key=e0939844aa0b4acaaa3153652233005&hour=${num+4}`,
-         {
-            method : "GET",
-            mode : "cors"
-         }
-      ).then(response => {
-         return response.json();
-        }).then(data4 => {
-
-         let t1;
-         if((num+4)>=12 & (num+4)<=24){
-            t1="PM";
-         }
-         else{
-            t1="AM";
-         }
-           $("#hour4").text((num+4).toString()+".00 "+t1);
-           const tem =data4.forecast.forecastday[0].hour[0].temp_c;
-           $("#hour4Value").text(data4.forecast.forecastday[0].hour[0].temp_c+"°C");
-           document.querySelector("#hour4image").src = data4.forecast.forecastday[0].hour[0].condition.icon;
-          
-           console.log((num+2)+"AM");
-           console.log(tem);
-        })
-          // Hourly weather for 5th hour
-
-        fetch(
-
-         
-         `http://api.weatherapi.com/v1/forecast.json?q=panadura&key=e0939844aa0b4acaaa3153652233005&hour=${num+5}`,
-         {
-            method : "GET",
-            mode : "cors"
-         }
-      ).then(response => {
-         return response.json();
-        }).then(data5 => {
-         let t1;
-         if((num+5)>=12 & (num+5)<=24){
-            t1="PM";
-         }
-         else{
-            t1="AM";
-         }
-           $("#hour5").text((num+5).toString()+".00 "+t1);
-           const tem =data5.forecast.forecastday[0].hour[0].temp_c;
-           $("#hour5Value").text(data5.forecast.forecastday[0].hour[0].temp_c+"°C");
-           document.querySelector("#hour5image").src = data5.forecast.forecastday[0].hour[0].condition.icon;
-          
-           console.log((num+2)+"AM");
-           console.log(tem);
-        })
-
-           // Hourly weather for 6th hour
-
-           fetch(
-
-         
-            `http://api.weatherapi.com/v1/forecast.json?q=panadura&key=e0939844aa0b4acaaa3153652233005&hour=${num+6}`,
-            {
-               method : "GET",
-               mode : "cors"
-            }
-         ).then(response => {
-            return response.json();
-           }).then(data6 => {
-            let t1;
-         if((num+6)>=12 & (num+6)<=24){
-            t1="PM";
-         }
-         else{
-            t1="AM";
-         }
-              $("#hour6").text((num+6).toString()+".00 "+t1);
-              const tem =data6.forecast.forecastday[0].hour[0].temp_c;
-              $("#hour6Value").text(data6.forecast.forecastday[0].hour[0].temp_c+"°C");
-              document.querySelector("#hour6image").src = data6.forecast.forecastday[0].hour[0].condition.icon;
-             
-              console.log((num+2)+"AM");
-              console.log(tem);
-           })
- });
-
- 
-
+      
+    })     
 
  $(".fahrenheit").click(function (){
    $(".temp-value-inner").text(tmpF+"°");
@@ -276,3 +225,35 @@ console.log(myArray);
    $(".fahrenheit").css("color","black");
 
  });
+ //----------------Function to get twelve hours time -------------------------
+
+function getTwelveHourFormat(d){
+
+let intValueofHour = parseInt(d.getHours());
+if(intValueofHour%12 ==12){
+   return intValueofHour+".00 AM";
+
+}
+else{
+   if(intValueofHour==12) return (intValueofHour)+".00 PM";
+   else return (intValueofHour%12)+".00 PM";
+}
+ }
+
+  //----------------Function to get twelve hours time with minutes -------------------------
+
+function getTwelveHourAndMinuteFormat(d){
+
+   let intValueofHour = parseInt(d.getHours());
+   console.log(d);
+   console.log(d.getHours());
+   if(intValueofHour%12 ==12){
+      console.log(intValueofHour+"."+d.getMinutes()+" AM");
+      return intValueofHour+":"+d.getMinutes()+" AM";
+   
+   }
+   else{
+      if(intValueofHour==12) return (intValueofHour)+":"+d.getMinutes()+" PM";
+      else return (intValueofHour%12)+":"+d.getMinutes()+" PM";
+   }
+    }

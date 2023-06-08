@@ -21,125 +21,87 @@ let windInKph ;
   let visKm;
   let visMiles;
   let pastDates;
+
   let lati ;
   let longi ;
-//=====================================testing for geolocation data =======================================
+//=====================================Function to fetch data according to geolocation =======================================
 
   navigator.geolocation.getCurrentPosition(function (position){
-    console.log(position);
-    lati=position.coords.altitude;
-    longi=position.coords.longitude;
-  });
+   console.log(position);
+   lati=position.coords.latitude;
+   longi=position.coords.longitude;
+   console.log("lati "+lati);
+   console.log("longi "+longi);
+  
+  })
 
-
-
-  fetch(
+  // fetch(
    
 
-    // ${searchedLocation}
-     //`http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(3)}`,
+  //   // ${searchedLocation}
+  //    //`http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(3)}`,
 
-     //`http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}`,
-     `http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${parseFloat(lati)},${parseFloat(longi)}`,
-     {
-        method : "GET",
-        mode : "cors"
-     }
-  ).then(response => {
-     return response.json();
-  }).then(data => {
+  //    //`http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}`,
+  //    `http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}`,
+  //    {
+  //       method : "GET",
+  //       mode : "cors"
+  //    }
+  // ).then(response => {
+  //    return response.json();
+  // }).then(data => {
 
-     console.log(data);
+  //    console.log(data);
+      
+  //    let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
+  //    let day = weekday[d.getDay()];
+  //    let month = months[d.getMonth()];
+  //    console.log(data.location.name+",    "+data.location.region);
+  //    console.log(day);
+  //    // Display location
 
-     
-       // Display location
+  //    $(".town-region").text(data.location.name+",    "+data.location.region);
+  //    $(".country").text(data.location.country);
 
-  //      $(".town-region").text(data.location.name+",    "+data.location.region);
-  //      $(".country").text(data.location.country);
-   });
+  //    // $(".country").text(formatDate(2));
 
+  //    //----------- Inside weather card- 3daysbefore -------------------------------
 
+  //    // Display date
+  //    $(".weathercard3-date").text(day+",  "+month+" "+d.getDate()+", "+d.getFullYear());
 
+  //    // Display condition image and temperature value
 
-//=====================================testing for geolocation data =======================================
+  //    document.querySelector("#conditionimage-3daybefore").src = data.forecast.forecastday[0].day.condition.icon;
+   
+  //    tmpF=data.forecast.forecastday[0].day.maxtemp_f;
+  //    tmpC=data.forecast.forecastday[0].day.maxtemp_c;
+  //    windInKph =data.forecast.forecastday[0].day.maxwind_kph;
+  //    windInMph =data.forecast.forecastday[0].day.maxwind_mph;
+  //    $(".temp-value-day3before").text(tmpC+"°");
+  //    $(".tempInCelcius-day3before").css("color","#f77f00");
 
+  //    // Display weather condition status
+  //    $(".weather-status-day3before").text(data.forecast.forecastday[0].day.condition.text);
 
+  //    // Display Other details like wind, percipitation and humidity
+      
+  //    $(".windvalue-day3before").text("Wind : "+windInKph+" ");
+  //    $(".wind-kph-day3before").css("color","#f77f00");
+      
+  //    precipMM = data.forecast.forecastday[0].day.totalprecip_mm;
+  //    precipIN = data.forecast.forecastday[0].day.totalprecip_in;
+  //    console.log(precipMM+"   "+precipIN);
+  //    $(".rainvalue-day3before").text("Percipitation : "+precipMM+" ");
+  //    $(".precip_mm-day3before").css("color","#f77f00");
 
+  //    $(".humidityvalue-day3before").text("Humidity : "+data.forecast.forecastday[0].day.avghumidity+" %");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // const successCallback = (position) => {
-  //   var crd = position.coords;
-  //     var lat = crd.latitude.toString();
-  //     var lng = crd.longitude.toString();
-  //     var coordinates = [lat, lng];
-  //     console.log("lati : "+ lat+" "+", logi :"+lng);
-  //     // consolelog(getCity(coordinates));
-    
-  // };
-  
-  // const errorCallback = (error) => {
-  //   console.log(error);
-  // };
-  
-  
-
-//=========================================================================================================================
-
-// function getCoordintes() {
-//   var options = {
-//       enableHighAccuracy: true,
-//       timeout: 5000,
-//       maximumAge: 0
-//   };
-
-//  const t1 = function success(pos) {
-//       var crd = pos.coords;
-//       var lat = crd.latitude.toString();
-//       var lng = crd.longitude.toString();
-//       var coordinates = [lat, lng];
-//       console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-//       consolelog(getCity(coordinates));
-//       getCity(coordinates);
-//       return;
-
-//   }
-
-//  const t2 = function error(err) {
-//       console.warn(`ERROR(${err.code}): ${err.message}`);
-//   }
-
-  
-// }
-// navigator.geolocation.getCurrentPosition(t1, t2);
-
-
-
-
-
-
-
-
-
-
-
+  //    visKm =data.forecast.forecastday[0].day.avgvis_km;
+  //    visMiles =data.forecast.forecastday[0].day.avgvis_miles;
+  //    $(".visibilityValue-day3before").text("Visibility : "+visKm+" ");
+  //    $(".vis_km-day3before").css("color","#f77f00");
+  //  });
 
 
 $(".searchBtn").click(function () {
@@ -579,3 +541,36 @@ function formatDate(num) {
  }
 
  // =====================================================Function to get any previous date in yyyy-mm-dd format=================================================== 
+
+  //----------------Function to get twelve hours time -------------------------
+
+function getTwelveHourFormat(d){
+
+  let intValueofHour = parseInt(d.getHours());
+  if(intValueofHour%12 ==12){
+     return intValueofHour+".00 AM";
+  
+  }
+  else{
+     if(intValueofHour==12) return (intValueofHour)+".00 PM";
+     else return (intValueofHour%12)+".00 PM";
+  }
+   }
+  
+    //----------------Function to get twelve hours time with minutes -------------------------
+  
+  function getTwelveHourAndMinuteFormat(d){
+  
+     let intValueofHour = parseInt(d.getHours());
+     console.log(d);
+     console.log(d.getHours());
+     if(intValueofHour%12 ==12){
+        console.log(intValueofHour+"."+d.getMinutes()+" AM");
+        return intValueofHour+":"+d.getMinutes()+" AM";
+     
+     }
+     else{
+        if(intValueofHour==12) return (intValueofHour)+":"+d.getMinutes()+" PM";
+        else return (intValueofHour%12)+":"+d.getMinutes()+" PM";
+     }
+      }
