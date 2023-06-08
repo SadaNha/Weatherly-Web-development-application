@@ -10,6 +10,18 @@ let tmpC = $(".celcius");
 let myArray;
 var num;
 
+
+const successCallback = (position) => {
+   console.log("current postion : "+position);
+ };
+ 
+ const errorCallback = (error) => {
+   console.log(error);
+ };
+ 
+ navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+
 $(".searchBtn").click(function () {
 
     let searchedLocation = textField.val();

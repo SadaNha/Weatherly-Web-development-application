@@ -21,10 +21,130 @@ let windInKph ;
   let visKm;
   let visMiles;
   let pastDates;
+  let lati ;
+  let longi ;
+//=====================================testing for geolocation data =======================================
+
+  navigator.geolocation.getCurrentPosition(function (position){
+    console.log(position);
+    lati=position.coords.altitude;
+    longi=position.coords.longitude;
+  });
+
+
+
+  fetch(
+   
+
+    // ${searchedLocation}
+     //`http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(3)}`,
+
+     //`http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}`,
+     `http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${parseFloat(lati)},${parseFloat(longi)}`,
+     {
+        method : "GET",
+        mode : "cors"
+     }
+  ).then(response => {
+     return response.json();
+  }).then(data => {
+
+     console.log(data);
+
+     
+       // Display location
+
+  //      $(".town-region").text(data.location.name+",    "+data.location.region);
+  //      $(".country").text(data.location.country);
+   });
+
+
+
+
+//=====================================testing for geolocation data =======================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // const successCallback = (position) => {
+  //   var crd = position.coords;
+  //     var lat = crd.latitude.toString();
+  //     var lng = crd.longitude.toString();
+  //     var coordinates = [lat, lng];
+  //     console.log("lati : "+ lat+" "+", logi :"+lng);
+  //     // consolelog(getCity(coordinates));
+    
+  // };
+  
+  // const errorCallback = (error) => {
+  //   console.log(error);
+  // };
+  
+  
+
+//=========================================================================================================================
+
+// function getCoordintes() {
+//   var options = {
+//       enableHighAccuracy: true,
+//       timeout: 5000,
+//       maximumAge: 0
+//   };
+
+//  const t1 = function success(pos) {
+//       var crd = pos.coords;
+//       var lat = crd.latitude.toString();
+//       var lng = crd.longitude.toString();
+//       var coordinates = [lat, lng];
+//       console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+//       consolelog(getCity(coordinates));
+//       getCity(coordinates);
+//       return;
+
+//   }
+
+//  const t2 = function error(err) {
+//       console.warn(`ERROR(${err.code}): ${err.message}`);
+//   }
+
+  
+// }
+// navigator.geolocation.getCurrentPosition(t1, t2);
+
+
+
+
+
+
+
+
+
+
+
+
 
 $(".searchBtn").click(function () {
 
-
+  
     let searchedLocation = textField.val();
    //  console.log(searchedLocation);
    // =====================================================Fetch 3daysbefore weather data===================================================
@@ -32,6 +152,9 @@ $(".searchBtn").click(function () {
 
       // ${searchedLocation}
        `http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=${searchedLocation}&dt=${formatDate(3)}`,
+
+       //`http://api.weatherapi.com/v1/current.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}`,
+       //`http://api.weatherapi.com/v1/history.json?key=e0939844aa0b4acaaa3153652233005&q=${lati},${longi}&dt=${formatDate(3)}`,
        {
           method : "GET",
           mode : "cors"
@@ -45,7 +168,7 @@ $(".searchBtn").click(function () {
          let d = new Date(data.forecast.forecastday[0].date.substr(0,10));
          let day = weekday[d.getDay()];
          let month = months[d.getMonth()];
-         console.log("3daysbefore "+d);
+         console.log(data.location.name+",    "+data.location.region);
          console.log(day);
          // Display location
 

@@ -21,6 +21,24 @@
     flex: 1;
     /* border: 1px solid black; */
 }
+
+.header-left{
+    display: flex;
+    align-items:center;
+    justify-content: flex-start;
+    font-size: 150%;
+}
+.weather-logo{
+    width: 10%;
+    height: 100%;
+    /* border: 1px solid red;
+    background: #f77f00; */
+    background-image: url("/asserts/weatherLogo.PNG");
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* background: position 0; */
+
+}
 .header-right{
     /* display: flex; */
     /* align-items: center;
